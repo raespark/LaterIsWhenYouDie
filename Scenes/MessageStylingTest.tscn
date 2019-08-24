@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/ReceivedMessageStyle.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scenes/SentMessageStyle.tres" type="StyleBox" id=2]
+
+[node name="MarginContainer" type="MarginContainer"]
+margin_right = 350.0
+margin_bottom = 600.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 340.0
+margin_bottom = 590.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 1 )
+text = "Hi it Me"
+autowrap = true
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 29.0
+margin_right = 300.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 1 )
+text = "Again Me"
+autowrap = true
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_left = 30.0
+margin_top = 58.0
+margin_right = 330.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 8
+custom_styles/normal = ExtResource( 2 )
+text = "Pls to going away
+
+I am do not wanting to talk to you"
+autowrap = true
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 121.0
+margin_right = 300.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 1 )
+text = "Oh K"
+autowrap = true
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_left = 30.0
+margin_top = 150.0
+margin_right = 330.0
+margin_bottom = 181.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 8
+custom_styles/normal = ExtResource( 2 )
+text = "Thank you I am now typing a very long message to see how it wraps oh no it doesn't"
+autowrap = true

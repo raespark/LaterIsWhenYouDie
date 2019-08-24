@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Scripts/TextConversation.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Images/phone-background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/phone-keyboard-background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/AstroScript.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Images/phone-border.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.972549, 0.92549, 0.831373, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.666667, 0.482353, 0.298039, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.470588, 0.431373, 0.360784, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.968627, 0.835294, 0.560784, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 67.755, -23.0634 )
+scale = Vector2( 0.48, 0.48 )
+script = ExtResource( 1 )
+dialogueFile = "res://Assets/Text/DialogueTest.json"
+
+[node name="Sprite2" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+margin_left = 110.189
+margin_top = 98.9889
+margin_right = 690.189
+margin_bottom = 828.989
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroll"]
+margin_right = 580.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Texts" type="VBoxContainer" parent="Scroll/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 570.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+custom_constants/separation = 30
+
+[node name="Sprite3" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Choices" type="Node2D" parent="."]
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="Choices"]
+margin_left = 85.6543
+margin_top = 858.458
+margin_right = 715.654
+margin_bottom = 1258.46
+custom_constants/separation = 50
+alignment = 1
+
+[node name="Option0" type="Button" parent="Choices/ChoiceContainer"]
+margin_top = 90.0
+margin_right = 629.0
+margin_bottom = 130.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0.352941, 0.337255, 0.337255, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "OPTION ONE"
+
+[node name="Option1" type="Button" parent="Choices/ChoiceContainer"]
+margin_top = 180.0
+margin_right = 629.0
+margin_bottom = 220.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0.352941, 0.337255, 0.337255, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "OPTION TWO"
+
+[node name="Option2" type="Button" parent="Choices/ChoiceContainer"]
+margin_top = 270.0
+margin_right = 629.0
+margin_bottom = 310.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0.352941, 0.337255, 0.337255, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "OPTION THREE"
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+[connection signal="pressed" from="Choices/ChoiceContainer/Option0" to="." method="_on_Option0_pressed"]
+[connection signal="pressed" from="Choices/ChoiceContainer/Option1" to="." method="_on_Option1_pressed"]
+[connection signal="pressed" from="Choices/ChoiceContainer/Option2" to="." method="_on_Option2_pressed"]

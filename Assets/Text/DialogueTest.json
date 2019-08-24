@@ -1,0 +1,53 @@
+[
+ {
+ 	"text": "Hey! This is a test recieved message. You gotta respond or something.",
+ 	"responseOptions": [
+ 		{
+ 			"text": "Who is this?",
+ 			"followUp": null
+ 		},
+ 		{
+ 			"text": "Shoot I didn't study...",
+ 			"followUp": "You Should always be prepared for surprise tests!"
+ 		},
+ 		{
+ 			"text": "You're a dork",
+ 			"followUp": "No you!!"
+ 		}
+ 	]
+ },
+ {
+ 	"text": "Looks like this was a successful test!",
+ 	"responseOptions": [
+ 		{
+ 			"text": "Cool, now leave me alone.",
+ 			"followUp": null
+ 		},
+ 		{
+ 			"text": "Woo! I passed!",
+ 			"followUp": null
+ 		},
+ 		{
+ 			"text": "This is all a simulation.",
+ 			"followUp": null
+ 		}
+ 	]
+ },
+ {
+ 	"text": "Can you leave me alone now?",
+ 	"responseOptions": [
+ 		{
+ 			"text": "I asked you first!",
+ 			"followUp": null
+ 		},
+ 		{
+ 			"text": "Bye",
+ 			"followUp": null
+ 		},
+ 		{
+ 			"text": "See you later.",
+ 			"followUp": null
+ 		}
+ 	]
+ }
+]
