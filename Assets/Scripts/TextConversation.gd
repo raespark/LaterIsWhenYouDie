@@ -8,17 +8,24 @@ var dialogue = []
 # the current dialogue in the list of strings to be displayed
 var current_dialogue = 0
 
+onready var typing_scene = load("res://Scenes/Typing.tscn")
+onready var typing_instance = typing_scene.instance()
+
 onready var recieved_style = load("res://Scenes/ReceivedMessageStyle.tres")
 
 onready var sent_style = load("res://Scenes/SentMessageStyle.tres")
 
 onready var font = load("res://Scenes/textMessageFont.tres")
 
+var message
+
+var isFollowup = false
+
+
 func _ready():
 	dialogue = _parseJSON()
-	var startingDialogue = dialogue[current_dialogue]
-	_print_message(startingDialogue.text, startingDialogue.responseOptions)
-
+	message = dialogue[current_dialogue]
+	_print_message(message.text, message.responseOptions, true)
 
 func _parseJSON():
 	var file = File.new()
@@ -51,35 +58,47 @@ func _print_message(text, options = false, recieved = true):
 		text_label.size_flags_horizontal = Label.SIZE_SHRINK_END
 		text_label.add_stylebox_override("normal", sent_style)
 	$Scroll/MarginContainer/Texts.add_child(text_label)
-	var bar = $Scroll.get_v_scrollbar()
-	print(bar.value)
-	print(bar.page)
-	print(bar.max_value)
-	if bar.value + bar.page >= bar.max_value :
-		print("scrollin time")
-		call_deferred("_scroll_to_bottom")
 	if typeof(options) == TYPE_ARRAY:
 		_enable_buttons()
 		$Choices/ChoiceContainer/Option0.set_text(options[0].text)
 		$Choices/ChoiceContainer/Option1.set_text(options[1].text)
 		$Choices/ChoiceContainer/Option2.set_text(options[2].text)
 
-func _scroll_to_bottom():
-	print("SCROLL NOW")
-	var bar = $Scroll.get_v_scrollbar()
-	bar.value = bar.max_value
+func _show_typing():
+	$Scroll/MarginContainer/Texts.add_child(typing_instance)
+	$TypingTimer.start()
+
+func _stop_typing():
+	$Received.play()
+	$Scroll/MarginContainer/Texts.remove_child(typing_instance)
+	_print_message(message.text, message.responseOptions, true)
+	if isFollowup:
+		isFollowup = false
+		current_dialogue += 1
+		if len(dialogue) > current_dialogue:
+			message = dialogue[current_dialogue]
+			_show_typing()
+		else: 
+			message = {"text": "Go Away.", "responseOptions": null}
+			_show_typing()
 
 func _option_selected(option_index):
+	$Sent.play()
 	_disable_buttons()
 	var responses = dialogue[current_dialogue].responseOptions
 	_print_message(responses[option_index].text, null, false)
 	if responses[option_index].followUp != null:
-			_print_message(responses[option_index].followUp)
+			isFollowup = true
+			message = {"text": responses[option_index].followUp, "responseOptions": null}
+			_show_typing()
+			return
 	current_dialogue += 1
 	if len(dialogue) > current_dialogue:
-		_print_message(dialogue[current_dialogue].text, dialogue[current_dialogue].responseOptions)
+		message = dialogue[current_dialogue]
+		_show_typing()
 	else: 
-		_print_message("Go home.")
+		message = {"text": "Go Away.", "responseOptions": null}
+		_show_typing()
 
 func _disable_buttons():
 	$Choices/ChoiceContainer/Option0.disabled = true

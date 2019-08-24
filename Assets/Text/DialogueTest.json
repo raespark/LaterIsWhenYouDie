@@ -25,28 +25,28 @@
  		},
  		{
  			"text": "Woo! I passed!",
- 			"followUp": null
+ 			"followUp": "Not really, but whatever you say."
  		},
  		{
  			"text": "This is all a simulation.",
- 			"followUp": null
+ 			"followUp": "Oh we got an edge lord over here."
  		}
  	]
  },
  {
- 	"text": "Can you leave me alone now?",
+ 	"text": "Alright we're done here...and since I'm just a disembodied voice I can't really leave...can you go now?",
  	"responseOptions": [
  		{
  			"text": "I asked you first!",
+ 			"followUp": "That's impossible to prove. Time is relative"
+ 		},
+ 		{
+ 			"text": "Bye...",
  			"followUp": null
  		},
  		{
- 			"text": "Bye",
- 			"followUp": null
- 		},
- 		{
- 			"text": "See you later.",
- 			"followUp": null
+ 			"text": "See you loser.",
+ 			"followUp": "Wow great comeback."
  		}
  	]
  }
