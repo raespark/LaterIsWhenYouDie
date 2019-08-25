@@ -1,4 +1,62 @@
 {  
+	"menu": [
+		{
+			"text": "Welcome to: \"Goodbye for now!\"",
+			"waitTime": 0
+		},
+		{
+			"text": "Click to play!",
+			"responseOptions": [
+				{  
+	               "text":"Play!",
+	               "gotoBranch":"main",
+	               "clearMessages": true
+	            },
+	            {  
+	               "text":"Credits",
+	               "gotoBranch":"credits"
+	            }
+			]
+		}
+	],
+	"credits": [
+		{
+			"text": "Some cool people worked on this game!",
+		},
+		{
+			"text": "Art/Programming was done by the cool Raespark!",
+		},
+		{
+			"waitTime": 2.5,
+			"text": "Writing by the awesome Zolaire!",
+		},
+		{
+			"waitTime": 2.5,
+			"text": "And some special thanks to Oelderoth for programming help!"
+		},
+		{
+			"text": "Sounds are from freesound.org, including the received message tone made by kickblue22.com"
+		}
+		{
+			"waitTime": 2.5,
+			"text": "And this game was made for the 5th ExtraCredits game jam!"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "The theme was PASSAGE"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "Thanks for playing, hope you enjoy!",
+			"responseOptions": [
+				{
+					"text": "Back",
+					"gotoBranch": "menu",
+					"clearMessages": true
+				}
+			]
+		}
+	],
    "main":[  
       {  
          "text":"Hey! This is a test recieved message. You gotta respond or something.",
@@ -10,10 +68,6 @@
             },
             {  
                "text":"Shoot I didn't study...",
-               "gotoBranch":"test"
-            },
-            {  
-               "text":"You're a dork",
                "gotoBranch":"test"
             }
          ]
@@ -50,14 +104,6 @@
          "text":"Looks like this was a successful test!",
          "responseOptions":[  
             {  
-               "text":"Cool, now leave me alone."
-
-            },
-            {  
-               "text":"Woo! I passed!"
-
-            },
-            {  
                "text":"This is all a simulation."
 
             }
@@ -83,12 +129,37 @@
    ],
    "relative":[  
       {  
-         "text":"That's impossible to prove. Time is relative"
+         "text":"That's impossible to prove. Time is relative",
+         "responseOptions":[  
+	            {  
+	               "text":"Then lets just go back",
+	               "gotoBranch":"main",
+	               "clearMessages": true
+	            }
+	         ]
       }
    ],
    "loser":[  
       {  
-         "text":"Wow great comeback."
+         "text":"Wow great comeback.",
+         "responseOptions":[  
+	            {  
+	               "text":"Wow, u win.",
+	               "gotoBranch":"main",
+	               "clearMessages": true
+	            }
+	         ]
       }
+   ],
+   "restart": [
+   		{
+	   		"responseOptions":[  
+	            {  
+	               "text":"Restart",
+	               "gotoBranch":"main",
+	               "clearMessages": true
+	            }
+	         ]
+   		}
    ]
 }

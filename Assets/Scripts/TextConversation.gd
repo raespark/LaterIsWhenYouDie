@@ -26,7 +26,7 @@ var isFollowup = false
 
 func _ready():
 	all_dialogue = _parseJSON()
-	dialogue = all_dialogue.get("main")
+	dialogue = all_dialogue.get("menu")
 	#message = dialogue[current_dialogue]
 	#_print_message(message.text, message.responseOptions, true)
 	show_message(dialogue[current_dialogue])
@@ -68,8 +68,19 @@ func _print_message(text, options = null, recieved = true):
 	if options != null:
 		_enable_buttons()
 		$Choices/ChoiceContainer/Option0.set_text(options[0].text)
-		$Choices/ChoiceContainer/Option1.set_text(options[1].text)
-		$Choices/ChoiceContainer/Option2.set_text(options[2].text)
+		
+		if (options.size() > 1):
+			$Choices/ChoiceContainer/Option1.set_text(options[1].text)
+			$Choices/ChoiceContainer/Option1.set_visible(true)
+		else:
+			$Choices/ChoiceContainer/Option1.set_visible(false)
+			
+		if (options.size() > 2):
+			$Choices/ChoiceContainer/Option2.set_text(options[2].text)
+			$Choices/ChoiceContainer/Option2.set_visible(true)
+		else:
+			$Choices/ChoiceContainer/Option2.set_visible(false)
+			
 	if text == null:			
 		return
 	var text_label = Label.new()
@@ -99,7 +110,14 @@ func _option_selected(option_index):
 	if (gotoBranch != null):
 		dialogue = all_dialogue.get(gotoBranch)
 		current_dialogue = -1
+		if (chosenResponse.get("clearMessages") == true):
+			_clear_messages()
 	_queue_next_message()
+
+func _clear_messages():
+	for child in $Scroll/MarginContainer/Texts.get_children():
+		$Scroll/MarginContainer/Texts.remove_child(child)
+		child.queue_free()
 
 func _queue_next_message():
 	current_dialogue += 1

@@ -105,7 +105,6 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Choices" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="Choices"]
 margin_left = 85.6543
