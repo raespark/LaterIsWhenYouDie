@@ -177,4 +177,3 @@ volume_db = 10.0
 [connection signal="pressed" from="Choices/ChoiceContainer/Option0" to="." method="_on_Option0_pressed"]
 [connection signal="pressed" from="Choices/ChoiceContainer/Option1" to="." method="_on_Option1_pressed"]
 [connection signal="pressed" from="Choices/ChoiceContainer/Option2" to="." method="_on_Option2_pressed"]
-[connection signal="timeout" from="TypingTimer" to="." method="_stop_typing"]

@@ -1,53 +1,94 @@
-[
- {
- 	"text": "Hey! This is a test recieved message. You gotta respond or something.",
- 	"responseOptions": [
- 		{
- 			"text": "Who is this?",
- 			"followUp": null
- 		},
- 		{
- 			"text": "Shoot I didn't study...",
- 			"followUp": "You Should always be prepared for surprise tests!"
- 		},
- 		{
- 			"text": "You're a dork",
- 			"followUp": "No you!!"
- 		}
- 	]
- },
- {
- 	"text": "Looks like this was a successful test!",
- 	"responseOptions": [
- 		{
- 			"text": "Cool, now leave me alone.",
- 			"followUp": null
- 		},
- 		{
- 			"text": "Woo! I passed!",
- 			"followUp": "Not really, but whatever you say."
- 		},
- 		{
- 			"text": "This is all a simulation.",
- 			"followUp": "Oh we got an edge lord over here."
- 		}
- 	]
- },
- {
- 	"text": "Alright we're done here...and since I'm just a disembodied voice I can't really leave...can you go now?",
- 	"responseOptions": [
- 		{
- 			"text": "I asked you first!",
- 			"followUp": "That's impossible to prove. Time is relative"
- 		},
- 		{
- 			"text": "Bye...",
- 			"followUp": null
- 		},
- 		{
- 			"text": "See you loser.",
- 			"followUp": "Wow great comeback."
- 		}
- 	]
- }
-]
+{  
+   "main":[  
+      {  
+         "text":"Hey! This is a test recieved message. You gotta respond or something.",
+         "waitTime": 0,
+         "responseOptions":[  
+            {  
+               "text":"Who is this?",
+               "gotoBranch":"alone"
+            },
+            {  
+               "text":"Shoot I didn't study...",
+               "gotoBranch":"test"
+            },
+            {  
+               "text":"You're a dork",
+               "gotoBranch":"test"
+            }
+         ]
+      }
+   ],
+   "alone":[  
+      {  
+      	 "waitTime": 1.0,
+         "responseOptions":[  
+            {  
+               "text":"Are you there?",
+               "gotoBranch":"alone"
+            },
+            {  
+               "text":"Hello?",
+               "gotoBranch":"alone"
+            },
+            {  
+               "text":"This is pretty one sided",
+               "gotoBranch":"test"
+            }
+         ]
+      }
+   ],
+   "test":[  
+      {  
+      	 "waitTime": 5.0,
+         "text":"TEST TEST TEST TEST TEST TEST TEST"
+      },
+      {
+      	"waitTime": 5.0
+      },
+      {  
+         "text":"Looks like this was a successful test!",
+         "responseOptions":[  
+            {  
+               "text":"Cool, now leave me alone."
+
+            },
+            {  
+               "text":"Woo! I passed!"
+
+            },
+            {  
+               "text":"This is all a simulation."
+
+            }
+         ]
+      },
+      {  
+         "text":"Alright we're done here...and since I'm just a disembodied voice I can't really leave...can you go now?",
+         "responseOptions":[  
+            {  
+               "text":"I asked you first!",
+               "gotoBranch":"relative"
+            },
+            {  
+               "text":"Bye..."
+
+            },
+            {  
+               "text":"See you loser.",
+               "gotoBranch":"loser"
+            }
+         ]
+      }
+   ],
+   "relative":[  
+      {  
+         "text":"That's impossible to prove. Time is relative"
+      }
+   ],
+   "loser":[  
+      {  
+         "text":"Wow great comeback."
+      }
+   ]
+}

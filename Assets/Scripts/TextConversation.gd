@@ -3,6 +3,8 @@ extends Node2D
 # JSON file representing conversation
 export (String, FILE, "*.json") var dialogueFile
 
+#object of all paths
+var all_dialogue
 # array of dialogue objects taken from the json file
 var dialogue = []
 # the current dialogue in the list of strings to be displayed
@@ -16,16 +18,34 @@ onready var recieved_style = load("res://Scenes/ReceivedMessageStyle.tres")
 onready var sent_style = load("res://Scenes/SentMessageStyle.tres")
 
 onready var font = load("res://Scenes/textMessageFont.tres")
+onready var coded_font = load("res://Scenes/codedMessageFont.tres")
 
 var message
 
 var isFollowup = false
 
-
 func _ready():
-	dialogue = _parseJSON()
-	message = dialogue[current_dialogue]
-	_print_message(message.text, message.responseOptions, true)
+	all_dialogue = _parseJSON()
+	dialogue = all_dialogue.get("main")
+	#message = dialogue[current_dialogue]
+	#_print_message(message.text, message.responseOptions, true)
+	show_message(dialogue[current_dialogue])
+
+func show_message(message):
+	var text = message.get("text")
+	var options = message.get("responseOptions")
+	var waitDuration = message.get("waitTime", 1.0)
+	if (waitDuration > 0):
+		$TypingTimer.wait_time = waitDuration;
+		$TypingTimer.start()
+		if (text != null):
+			$Scroll/MarginContainer/Texts.add_child(typing_instance)
+		yield($TypingTimer, "timeout")
+		if (text != null):
+			$Scroll/MarginContainer/Texts.remove_child(typing_instance)
+	_print_message(message.get("text"), message.get("responseOptions"), true)
+	if (message.get("responseOptions") == null):
+		_queue_next_message()
 
 func _parseJSON():
 	var file = File.new()
@@ -44,61 +64,51 @@ func _parseJSON():
 		return []
 	return jsonResult.result
 
-func _print_message(text, options = false, recieved = true):
-	var text_label = Label.new()
-	text_label.text = text
-	text_label.add_font_override("font", font)
-	text_label.autowrap = true
-	text_label.rect_min_size.x = 400
-	if recieved:
-		text_label.add_color_override("font_color", Color.black)
-		text_label.size_flags_horizontal = 0
-		text_label.add_stylebox_override("normal", recieved_style)
-	else:
-		text_label.size_flags_horizontal = Label.SIZE_SHRINK_END
-		text_label.add_stylebox_override("normal", sent_style)
-	$Scroll/MarginContainer/Texts.add_child(text_label)
-	if typeof(options) == TYPE_ARRAY:
+func _print_message(text, options = null, recieved = true):
+	if options != null:
 		_enable_buttons()
 		$Choices/ChoiceContainer/Option0.set_text(options[0].text)
 		$Choices/ChoiceContainer/Option1.set_text(options[1].text)
 		$Choices/ChoiceContainer/Option2.set_text(options[2].text)
-
-func _show_typing():
-	$Scroll/MarginContainer/Texts.add_child(typing_instance)
-	$TypingTimer.start()
-
-func _stop_typing():
-	$Received.play()
-	$Scroll/MarginContainer/Texts.remove_child(typing_instance)
-	_print_message(message.text, message.responseOptions, true)
-	if isFollowup:
-		isFollowup = false
-		current_dialogue += 1
-		if len(dialogue) > current_dialogue:
-			message = dialogue[current_dialogue]
-			_show_typing()
-		else: 
-			message = {"text": "Go Away.", "responseOptions": null}
-			_show_typing()
+	if text == null:			
+		return
+	var text_label = Label.new()
+	text_label.text = text
+	text_label.autowrap = true
+	text_label.rect_min_size.x = 400
+	if recieved:
+		$Received.play()
+		text_label.add_font_override("font", coded_font)
+		text_label.uppercase = true
+		text_label.add_color_override("font_color", Color.black)
+		text_label.size_flags_horizontal = 0
+		text_label.add_stylebox_override("normal", recieved_style)
+	else:
+		$Sent.play()
+		text_label.add_font_override("font", font)
+		text_label.size_flags_horizontal = Label.SIZE_SHRINK_END
+		text_label.add_stylebox_override("normal", sent_style)
+	$Scroll/MarginContainer/Texts.add_child(text_label)
 
 func _option_selected(option_index):
-	$Sent.play()
 	_disable_buttons()
-	var responses = dialogue[current_dialogue].responseOptions
-	_print_message(responses[option_index].text, null, false)
-	if responses[option_index].followUp != null:
-			isFollowup = true
-			message = {"text": responses[option_index].followUp, "responseOptions": null}
-			_show_typing()
-			return
+	var responses = dialogue[current_dialogue].get("responseOptions")
+	var chosenResponse = responses[option_index]
+	_print_message(chosenResponse.get("text"), null, false)
+	var gotoBranch = chosenResponse.get("gotoBranch")
+	if (gotoBranch != null):
+		dialogue = all_dialogue.get(gotoBranch)
+		current_dialogue = -1
+	_queue_next_message()
+
+func _queue_next_message():
 	current_dialogue += 1
 	if len(dialogue) > current_dialogue:
 		message = dialogue[current_dialogue]
-		_show_typing()
+		show_message(message)
 	else: 
 		message = {"text": "Go Away.", "responseOptions": null}
-		_show_typing()
+		show_message(message)
 
 func _disable_buttons():
 	$Choices/ChoiceContainer/Option0.disabled = true
