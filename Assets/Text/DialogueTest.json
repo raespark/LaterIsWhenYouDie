@@ -1,7 +1,7 @@
 {  
 	"menu": [
 		{
-			"text": "Welcome to: \"Goodbye for now!\"",
+			"text": "Welcome to: \"(...)\"",
 			"waitTime": 0
 		},
 		{
@@ -21,14 +21,14 @@
 	],
 	"credits": [
 		{
-			"text": "Some cool people worked on this game!",
+			"text": "Some cool people worked on this game!"
 		},
 		{
-			"text": "Art/Programming was done by the cool Raespark!",
+			"text": "Art/Programming was done by the cool Raespark!"
 		},
 		{
 			"waitTime": 2.5,
-			"text": "Writing by the awesome Zolaire!",
+			"text": "Writing by the awesome Zolaire!"
 		},
 		{
 			"waitTime": 2.5,
@@ -36,7 +36,7 @@
 		},
 		{
 			"text": "Sounds are from freesound.org, including the received message tone made by kickblue22.com"
-		}
+		},
 		{
 			"waitTime": 2.5,
 			"text": "And this game was made for the 5th ExtraCredits game jam!"
@@ -76,6 +76,7 @@
    "alone":[  
       {  
       	 "waitTime": 1.0,
+      	 "hideTyping": true,
          "responseOptions":[  
             {  
                "text":"Are you there?",
@@ -98,7 +99,8 @@
          "text":"TEST TEST TEST TEST TEST TEST TEST"
       },
       {
-      	"waitTime": 5.0
+      	"waitTime": 5.0,
+      	"hideTyping": true
       },
       {  
          "text":"Looks like this was a successful test!",

@@ -22,26 +22,25 @@ onready var coded_font = load("res://Scenes/codedMessageFont.tres")
 
 var message
 
-var isFollowup = false
+var branch = "menu"
 
 func _ready():
 	all_dialogue = _parseJSON()
-	dialogue = all_dialogue.get("menu")
+	dialogue = all_dialogue.get(branch)
 	#message = dialogue[current_dialogue]
 	#_print_message(message.text, message.responseOptions, true)
 	show_message(dialogue[current_dialogue])
 
 func show_message(message):
-	var text = message.get("text")
-	var options = message.get("responseOptions")
 	var waitDuration = message.get("waitTime", 1.0)
+	var hideTyping = message.get("hideTyping", false)
 	if (waitDuration > 0):
 		$TypingTimer.wait_time = waitDuration;
 		$TypingTimer.start()
-		if (text != null):
+		if not hideTyping:
 			$Scroll/MarginContainer/Texts.add_child(typing_instance)
 		yield($TypingTimer, "timeout")
-		if (text != null):
+		if not hideTyping:
 			$Scroll/MarginContainer/Texts.remove_child(typing_instance)
 	_print_message(message.get("text"), message.get("responseOptions"), true)
 	if (message.get("responseOptions") == null):
@@ -81,7 +80,7 @@ func _print_message(text, options = null, recieved = true):
 		else:
 			$Choices/ChoiceContainer/Option2.set_visible(false)
 			
-	if text == null:			
+	if text == null:
 		return
 	var text_label = Label.new()
 	text_label.text = text
@@ -89,12 +88,17 @@ func _print_message(text, options = null, recieved = true):
 	text_label.rect_min_size.x = 400
 	if recieved:
 		$Received.play()
-		text_label.add_font_override("font", coded_font)
+		if branch == "menu" or branch == "credits":
+			text_label.add_font_override("font", font)
+		else:
+			text_label.add_font_override("font", coded_font)
 		text_label.uppercase = true
 		text_label.add_color_override("font_color", Color.black)
 		text_label.size_flags_horizontal = 0
 		text_label.add_stylebox_override("normal", recieved_style)
 	else:
+		if(text == "(say nothing)"):
+			return
 		$Sent.play()
 		text_label.add_font_override("font", font)
 		text_label.size_flags_horizontal = Label.SIZE_SHRINK_END
@@ -108,6 +112,7 @@ func _option_selected(option_index):
 	_print_message(chosenResponse.get("text"), null, false)
 	var gotoBranch = chosenResponse.get("gotoBranch")
 	if (gotoBranch != null):
+		branch = gotoBranch
 		dialogue = all_dialogue.get(gotoBranch)
 		current_dialogue = -1
 		if (chosenResponse.get("clearMessages") == true):
@@ -123,9 +128,6 @@ func _queue_next_message():
 	current_dialogue += 1
 	if len(dialogue) > current_dialogue:
 		message = dialogue[current_dialogue]
-		show_message(message)
-	else: 
-		message = {"text": "Go Away.", "responseOptions": null}
 		show_message(message)
 
 func _disable_buttons():

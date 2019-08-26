@@ -1,0 +1,595 @@
+{
+	"menu": [
+		{
+			"text": "Welcome to: \"(...)\"",
+			"waitTime": 0
+		},
+		{
+			"text": "Click to play!",
+			"waitTime": 0,
+			"responseOptions": [
+				{  
+	               "text":"Play!",
+	               "gotoBranch":"beginning",
+	               "clearMessages": true
+	            },
+	            {  
+	               "text":"Credits",
+	               "gotoBranch":"credits"
+	            }
+			]
+		}
+	],
+	"credits": [
+		{
+			"text": "Some cool people worked on this game!"
+		},
+		{
+			"text": "Art/Programming was done by the cool Raespark!"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "Writing by the awesome Zolaire!"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "And some special thanks to Oelderoth for programming help!"
+		},
+		{
+			"text": "Sounds are from freesound.org, including the received message tone made by kickblue22.com"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "And this game was made for the 5th ExtraCredits game jam!"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "The theme was PASSAGE"
+		},
+		{
+			"waitTime": 2.5,
+			"text": "Thanks for playing, hope you enjoy!",
+			"responseOptions": [
+				{
+					"text": "Back",
+					"gotoBranch": "menu",
+					"clearMessages": true
+				}
+			]
+		}
+	],
+	"beginning": [
+		{
+			"text": "vcb"
+		},
+		{
+			"text": "vpbij ju",
+			"responseOptions": [
+				{
+					"text": "hey friend!"
+				},
+				{
+					"text": "hi~~~"
+				},
+				{
+					"text": "whats up"
+				}
+			]
+		},
+		{
+			"text": "vdlf'kj oiw sd wef?",
+			"responseOptions": [
+				{
+					"text": "not much, you?"
+				},
+				{
+					"text": "whatever"
+				},
+				{
+					"text": "let's meet up?"
+				}
+			]
+		},
+		{
+			"text": "well...",
+			"waitTime": 3.0
+		},
+		{
+			"waitTime": 2.0
+		},
+		{
+			"waitTime": 1.0,
+			"hideTyping": true
+		},
+		{
+			"waitTime": 4.0,
+			"text": "r'y osidjf",
+			"responseOptions": [
+				{
+					"text": "leaving?"
+				},
+				{
+					"text": "moving?"
+				},
+				{
+					"text": "????"
+				}
+			]
+		},
+		{
+			"waitTime": 3.0,
+			"text": "wef sdfdfwe cvbxcb, ytity, gfhf fgr",
+			"responseOptions": [
+				{
+					"text": "haha, what?"
+				},
+				{
+					"text": "haha what"
+				},
+				{
+					"text": "hahaaaa what!"
+				}
+			]
+		},
+		{
+			"waitTime": 2.0
+		},
+		{
+			"waitTime": 1.0,
+			"hideTyping": true
+		},
+		{
+			"waitTime": 3.0,
+			"text": "ow dfi't ir isdlkef asdffe sdfdff asdfewd",
+			"responseOptions": [
+				{
+					"text": "I'm sorry to hear that"
+				},
+				{
+					"text": "so, this is the end?"
+				},
+				{
+					"text": "were you just not gonna tell me...?"
+				}
+			]
+		},
+		{
+			"waitTime": 3.0,
+			"text": "oiw uweuif weo mwoeidlkdi di sdisdfos disdfoeis. sd'f weoifd.",
+			"responseOptions": [
+				{
+					"text": "...how do you feel?"
+				}, 
+				{
+					"text": "do you care at all about how i feel?"
+				},
+				{
+					"text": "there has to be another way"
+				}
+			]
+		},
+		{
+			"waitTime": 5.0,
+			"text": "asdfasdlk asdf asdf jfkdljk fdkfljwe lfkdlopopl powe jeiroe lasdf. lweoiw aweofiwje  woeifj of eoeioiew wjeij w weioweo. woeifjew."
+		},
+		{
+			"waitTime": 5.0,
+			"text": "asdfk asdfa.",
+			"responseOptions": [
+				{
+					"text":"i'm gonna miss you."
+				},
+				{
+					"text": "not like you really cared anyway"
+				},
+				{
+					"text": "how can I get you to stay?"
+				}
+			]
+		},
+		{
+			"text": "wefawe wefwe",
+			"waitTime": 2.0,
+			"responseOptions":[
+				{
+					"text": "you're going to be ok"
+				},
+				{
+					"text": "i see..."
+				},
+				{
+					"text":"why the fuck tho"
+				}
+			]
+		},
+		{
+			"text": "iweaoweij fewoiwe fe, owefiwoefi weoifw f ei feo weiowe efio"
+		},
+		{
+			"text": "asdfk sdfk ef fek. fewe we wefio wef weo fewofiweo weoowi eoiw.",
+			"responseOptions": [
+				{
+					"text": "calm down",
+					"gotoBranch": "middle1"
+				},
+				{
+					"text": "slow down",
+					"gotoBranch": "middle2"
+				},
+				{
+					"text": "why didn't you say anything sooner",
+					"gotoBranch": "middle1"
+				}
+			]
+		}
+	],
+	"middle1": [
+		{
+			"text": "asdfe"
+		},
+		{
+			"text": "as"
+		},
+		{
+			"text": "asdfae",
+			"waitTime": 3.0,
+			"responseOptions": [
+				{
+					"text": "do you remember a time when...?",
+					"gotoBranch": "middle3"
+				},
+				{
+					"text": "why can't you just stay here?",
+					"gotoBranch": "middle4"
+				},
+				{
+					"text": "this isn't fair",
+					"gotoBranch": "middle5"
+				}
+			]
+		}
+	],
+	"middle2": [
+		{
+			"text": "aslkdf"
+		},
+		{
+			"text": "wiuefh wef wefweoi lkjc cvb clkj oijoi qweqweq. wqerwoiuey iqwe qwew. qwewowqiu. sdhvb, sdkfhiueh fewu feuwi.",
+			"waitTime": 4.0
+		},
+		{
+			"hideTyping": true,
+			"waitTime": 1.5
+		},
+		{
+			"text": "uro eriu werosd wedoij f jekwfdenjfi fnilhe fjnei jvniwoe ojoic copi ciowp vdfg. owier qwe erkel werl weroi woer vgfd hdoieh...",
+			"waitTime": 5.0,
+			"responseOptions": [
+				{
+					"text": "do you remember a time when...?",
+					"gotoBranch": "middle3"
+				},
+				{
+					"text": "why can't you just stay here?",
+					"gotoBranch": "middle4"
+				},
+				{
+					"text": "this isn't fair",
+					"gotoBranch": "middle5"
+				}
+			]
+		}
+	],
+	"middle3": [
+		{
+			"text": "oiwe wo toiy sdo xcvbr",
+			"waitTime": 2.0
+		},
+		{
+			"text": "waui we poer dfv blgk nxckj, jfdlnvkj ksj's asdfhi. lskd.",
+			"responseOptions": [
+				{
+					"text": "don't you think i'm upset too?",
+					"gotoBranch": "middle6"
+				},
+				{
+					"text": "do you think we'll still be...?",
+					"gotoBranch": "middle6"
+				},
+				{
+					"text": "what a day...",
+					"gotoBranch": "middle6"
+				}
+			]
+		}
+	],
+	"middle4": [
+		{
+			"text": "aosdi woefi woei"
+		},
+		{
+			"text": "owi vcb awee'r lkcxvlkn"
+		},
+		{
+			"text": "tji xcvb qpoeru lskd zxc",
+			"responseOptions": [
+				{
+					"text": "don't you think i'm upset too?",
+					"gotoBranch": "middle6"
+				},
+				{
+					"text": "do you think we'll still be...?",
+					"gotoBranch": "middle6"
+				},
+				{
+					"text": "what a day...",
+					"gotoBranch": "middle6"
+				}
+			]
+		}
+	],
+	"middle5": [
+		{
+			"text": "iogj adfgas, wgoi elrkjg vc sowie z sldkfp u ioe toril thwo. woiu weoif lc msdv.",
+			"responseOptions": [
+				{
+					"text": "don't you think i'm upset too?",
+					"gotoBranch": "middle6"
+				},
+				{
+					"text": "do you think we'll still be...?",
+					"gotoBranch": "middle6"
+				},
+				{
+					"text": "what a day...",
+					"gotoBranch": "middle6"
+				}
+			]
+		}
+	],
+	"middle6": [
+		{
+			"text": "woeif aslkdf.",
+			"responseOptions": [
+				{
+					"text": "this is a lot"
+				},
+				{
+					"text": "i guess i gotta be happy for you"
+				},
+				{
+					"text": "i can't deal with this right now"
+				}
+			]
+		},
+		{
+			"text": "os.",
+			"responseOptions": [
+				{
+					"text": "its okay",
+					"gotoBranch": "end2"
+				},
+				{
+					"text": "its okay.",
+					"gotoBranch": "end1"
+				},
+				{
+					"text": "its okay~~",
+					"gotoBranch": "end2"
+				}
+			]
+		}
+	],
+	"end1": [
+		{
+			"text": "asdf asdfkjowi aweiofjwe. lkwefwejoi, aowief jie ewiow a iowejlio fwoieo efe. oweif lwek owe.",
+			"waitTime": 4.0
+		},
+		{
+			"text": "aosi woefil welkwlek aosid woeijp qpw wpie akljv a, viosa rtoiu vkd.",
+			"waitTime": 3.0
+		},
+		{
+			"text": "as ypoi xcv,mn qoeu woeriu ktj. oiur weoioi lkjvb werjh cvlos. slv. dkvjs. liv poqwer oituowie vmn!",
+			"waitTime": 5.0,
+			"responseOptions": [
+				{
+					"text": "ilu",
+					"gotoBranch": "heartloop"
+				},
+				{
+					"text": "i remember now",
+					"gotoBranch": "end3"
+				},
+				{
+					"text": "(say nothing)",
+					"gotoBranch": "sayNothingEnding"
+				}
+			]
+		}
+	],
+	"end2": [
+		{
+			"text": "asl woeiwo lkdsf."
+		},
+		{
+			"text": "asd woefi w. woefijwef xoivcj oisdj vowiejwo pesd fowe fwepfi psfweifo wefoiw ejflskdjfoweif jwoij oijwf.",
+			"responseOptions": [
+				{
+					"text": "ilu",
+					"gotoBranch": "heartloop"
+				},
+				{
+					"text": "i remember now",
+					"gotoBranch": "end3"
+				},
+				{
+					"text": "(say nothing)",
+					"gotoBranch": "sayNothingEnding"
+				}
+			]
+		}
+	],
+	"heartloop": [
+		{
+			"text": "ilu",
+			"responseOptions": [
+				{
+					"text": "ilu",
+					"gotoBranch": "heartloop"
+				},
+				{
+					"text": "i remember now",
+					"gotoBranch": "end3"
+				},
+				{
+					"text": "(say nothing)",
+					"gotoBranch": "sayNothingEnding"
+				}
+			]
+		}
+	],
+	"sayNothingEnding": [
+		{
+			"waitTime": 3.0
+		},
+		{
+			"waitTime": 1.0,
+			"hideTyping": true
+		},
+		{
+			"waitTime": 2.0
+		},
+		{
+			"waitTime": 8.0,
+			"hideTyping": true
+		},
+		{
+			"hideTyping": true,
+			"responseOptions": [
+				{
+					"text": "Return to Menu",
+					"gotoBranch": "menu",
+					"clearMessages": true
+				}
+			]
+		}
+	],
+	"end3": [
+		{
+			"responseOptions": [
+				{
+					"text": "the past has been hard on both of us"
+				},
+				{
+					"text": "what you said about the future"
+				}
+			]
+		}
+	],
+	"end 4": [
+		{
+			"responseOptions": [
+				{
+					"text": "and i think this next move will be good"
+				},
+				{
+					"text": "and i want you to be happy"
+				}
+			]
+		},
+		{
+			"responseOptions": [
+				{
+					"text": "we weren't going to get along forever, y'know"
+				},
+				{
+					"text": "so please let me make this right"
+				},
+				{
+					"text": "so, i forgive you"
+				}
+			]
+		},
+		{
+			"text": "sjie vlb dflbkj woeri qwpeo."
+		}, 
+		{
+			"text": "vkj oeir dfbke oweuewo vkcjnoiwo. wotiu vnn werjl mflbro lskdf.",
+			"waitTime": 3.0,
+			"responseOptions": [
+				{
+					"text": "thank you for everything",
+					"gotoBranch": "nothingMoreToSayEnding"
+				},
+				{
+					"text": "(say nothing)",
+					"gotoBranch": "sayNothingEnding"
+				}
+			]
+		}
+	],
+	"nothingMoreToSayEnding": [
+		{
+			"waitTime": 8.0,
+			"hideTyping": true
+		},
+		{
+			"responseOptions": [
+				{
+					"text": "Return to Menu",
+					"gotoBranch": "menu",
+					"clearMessages": true
+				}
+			]
+		}
+	],
+	"end 5": [
+		{
+			"responseOptions": [
+				{
+					"text": "and how everything will work out"
+				},
+				{
+					"text": "and how its ok if things change"
+				}
+			]
+		},
+		{
+			"responseOptions": [
+				{
+					"text": "take care of yourself!"
+				},
+				{
+					"text": "so yeah, fuck you too, lol"
+				},
+				{
+					"text": "...i'm gonna miss you"
+				}
+			]
+		},
+		{
+			"waitTime": 2.0
+		},
+		{
+			"text": "e'sd weff sdi euu."
+		},
+		{
+			"text": "goodbye",
+			"responseOptions": [
+				{
+					"text": "bye",
+					"gotoBranch": "nothingMoreToSayEnding"
+				},
+				{
+					"text": "until next time, then",
+					"gotoBranch": "nothingMoreToSayEnding"
+				},
+				{
+					"text": "chatch ya later",
+					"gotoBranch": "nothingMoreToSayEnding"
+				}
+			]
+		}
+	]
+}
