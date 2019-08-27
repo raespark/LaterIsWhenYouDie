@@ -235,7 +235,7 @@
 			"waitTime": 3.0,
 			"responseOptions": [
 				{
-					"text": "do you remember a time when...?",
+					"text": "remember the time when...?",
 					"gotoBranch": "middle3"
 				},
 				{
@@ -266,7 +266,7 @@
 			"waitTime": 5.0,
 			"responseOptions": [
 				{
-					"text": "do you remember a time when...?",
+					"text": "remember the time when...?",
 					"gotoBranch": "middle3"
 				},
 				{
@@ -349,6 +349,7 @@
 	],
 	"middle6": [
 		{
+			"waitTime": 4.0,
 			"text": "woeif aslkdf.",
 			"responseOptions": [
 				{
@@ -372,10 +373,6 @@
 				{
 					"text": "its okay.",
 					"gotoBranch": "end1"
-				},
-				{
-					"text": "its okay~~",
-					"gotoBranch": "end2"
 				}
 			]
 		}
@@ -477,21 +474,25 @@
 	],
 	"end3": [
 		{
+			"hideTyping": true,
 			"responseOptions": [
 				{
-					"text": "the past has been hard on both of us"
+					"text": "the past has been hard",
+					"gotoBranch": "end4"
 				},
 				{
-					"text": "what you said about the future"
+					"text": "what you said about the future",
+					"gotoBranch": "end5"
 				}
 			]
 		}
 	],
-	"end 4": [
+	"end4": [
 		{
+			"hideTyping": true,
 			"responseOptions": [
 				{
-					"text": "and i think this next move will be good"
+					"text": "this change feels needed"
 				},
 				{
 					"text": "and i want you to be happy"
@@ -499,9 +500,10 @@
 			]
 		},
 		{
+			"hideTyping": true,
 			"responseOptions": [
 				{
-					"text": "we weren't going to get along forever, y'know"
+					"text": "maybe this isn't forever"
 				},
 				{
 					"text": "so please let me make this right"
@@ -512,11 +514,18 @@
 			]
 		},
 		{
+			"waitTime": 2.0
+		},
+		{
+			"hideTyping": true
+		},
+		{
+			"waitTime": 3.0,
 			"text": "sjie vlb dflbkj woeri qwpeo."
 		}, 
 		{
 			"text": "vkj oeir dfbke oweuewo vkcjnoiwo. wotiu vnn werjl mflbro lskdf.",
-			"waitTime": 3.0,
+			"waitTime": 4.0,
 			"responseOptions": [
 				{
 					"text": "thank you for everything",
@@ -535,6 +544,7 @@
 			"hideTyping": true
 		},
 		{
+			"hideTyping": true,
 			"responseOptions": [
 				{
 					"text": "Return to Menu",
@@ -544,18 +554,20 @@
 			]
 		}
 	],
-	"end 5": [
+	"end5": [
 		{
+			"hideTyping": true,
 			"responseOptions": [
 				{
-					"text": "and how everything will work out"
+					"text": "how everything will work out"
 				},
 				{
-					"text": "and how its ok if things change"
+					"text": "how it's ok if things change"
 				}
 			]
 		},
 		{
+			"hideTyping": true,
 			"responseOptions": [
 				{
 					"text": "take care of yourself!"
@@ -572,7 +584,11 @@
 			"waitTime": 2.0
 		},
 		{
-			"text": "e'sd weff sdi euu."
+			"hideTyping": true
+		},
+		{
+			"text": "e'sd weff sdi euu.",
+			"waitTime": 3.0
 		},
 		{
 			"text": "goodbye",
@@ -586,7 +602,7 @@
 					"gotoBranch": "nothingMoreToSayEnding"
 				},
 				{
-					"text": "chatch ya later",
+					"text": "catch ya later",
 					"gotoBranch": "nothingMoreToSayEnding"
 				}
 			]

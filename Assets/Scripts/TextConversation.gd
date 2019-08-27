@@ -85,7 +85,7 @@ func _print_message(text, options = null, recieved = true):
 	var text_label = Label.new()
 	text_label.text = text
 	text_label.autowrap = true
-	text_label.rect_min_size.x = 400
+	text_label.rect_min_size.x = 450
 	if recieved:
 		$Received.play()
 		if branch == "menu" or branch == "credits":
